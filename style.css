@@ -18,8 +18,8 @@ body{
 
 .container{
    width: 480px;
-   height: 630px;
-   background: white;
+   height: 720px; 
+   background: #fff;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -28,37 +28,77 @@ body{
 
 }
 
-form{
-    width: 90%;
+.form{
+    width: 90%; 
+ 
 }
 
-input{
+.form-control{
+    margin-bottom: 0.6rem;
+    padding-bottom: 1.25rem;
+    position: relative;
+}
+
+.form-control label{
+    color: #777;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.form-control input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
     width: 100%;
-    margin-bottom: 0.5rem;
+    padding: 0.6rem;
+    font-size: 0.9rem;
 }
 
-input::placeholder{
-    color: red;
+.form-control input:focus{
+    outline: 0;
+}
+.form-control.success input{
+    border-color: #2ecc71;
 }
 
-button{
+.form-control.error input{
+    border-color: #e74c3c;
+}
+
+.form-control small{
+    color: #e74c3c;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control.error small{
+    visibility: visible;
+}
+
+.form-control input::placeholder{
+    color: grey;
+}
+
+.form button{
     cursor: pointer;
     color: #fff;
     background-color: black;
     border: none;
     border-radius: 5px;
-    height: 50px;
+    padding: 0.6rem;
     width: 100%;
     font-size: 1.5rem;
     font-family: sen,sans-serif;
     letter-spacing: 2px;
-    margin-top: 5px;
+    margin-top: 1.2rem;
 }
 
-button:hover{
+.form button:hover{
     filter: contrast(200%);
     background-color: rgb(22,22,22);
 }
-button:focus{
+.form button:focus{
     outline: none;
 }
