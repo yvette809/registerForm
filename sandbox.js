@@ -1,4 +1,3 @@
-
 const form = document.getElementById('form')
 const firstname = document.getElementById('firstname')
 const lastname = document.getElementById('lastname')
@@ -133,5 +132,4 @@ form.addEventListener('submit', (e) => {
         listUsers()
     }
 })
-
 
