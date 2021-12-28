@@ -103,3 +103,20 @@ body{
     outline: none;
 }
 
+
+.users{
+    margin-top: 8rem;
+   
+}
+
+.user-div{
+    position: relative;
+}
+
+.users .user-div button{
+   position: absolute;
+   right: 2rem;
+   top: 0;
+   color: red;
+   border-radius: 5px;
+}

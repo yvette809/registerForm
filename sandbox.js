@@ -133,3 +133,9 @@ form.addEventListener('submit', (e) => {
     }
 })
 
+
+
+//  if (firstname.value !== "" && lastname.value !== "" && email.value !== "" && (validateEmail(email.value))&&checkLength(password, 3, 15) ) {
+    register(firstname.value, lastname.value, email.value, password.value, password.value)
+    listUsers()
+}//
