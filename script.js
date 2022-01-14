@@ -17,6 +17,14 @@ let users = [
 
 ]
 
+// let users;
+
+// get users from localstorage
+// const localStorageUsers = JSON.parse(localStorage.getItem('users'))
+// //if we hav users in the local storage, we get them otherwise we return an empty array
+
+// let users = localStorage.getItem('users')!==null? localStorageUsers: []
+
 
 // dom elements
 
@@ -26,24 +34,27 @@ const lastname = document.getElementById('lastname')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
 const password2 = document.getElementById('password2')
-let usersDiv = document.querySelector('div.users')
+let output = document.querySelector('ul.users')
+console.log(output)
+
 
 
 // functions
 // show input error mesage
 function showError(input, message) {
-    //let formControl = document.querySelector('.form-control')
-    const formControl = input.parentElement
-    formControl.classList.add('error')
-    const small = formControl.querySelector('small')
+    const parent = input.parentElement
+    parent.classList.add('error')
+    parent.classList.remove('success')
+    const small = parent.querySelector('small')
     small.innerText = message
 
 }
 
 // show success message
 function showSuccess(input) {
-    let formControl = document.querySelector('.form-control')
-    formControl.className = 'form-control success'
+    const parent = input.parentElement
+    parent.classList.remove('error')
+    parent.classList.add('success')
 
 }
 
@@ -65,25 +76,26 @@ const checkRequired = (inputArr) => {
 
 const listUsers = () => {
 
-    usersDiv.innerHTML = ""
+    output.innerHTML = ""
+
     users.forEach(user => {
 
-        user = `<div 'id=${user.id}' class="user-div">
-          <span>${user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1)}</span>
-          <span>${user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}</span>
-          <p>${user.email}</p>  
-          <button type="button" class="btn btn-danger">X<button>
-        <div>
-         `
-        usersDiv.innerHTML += user
-
+        output.innerHTML += `<li 'id=${user.id}' class="user-div">
+        <span>${user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1)}</span>
+        <span>${user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}</span>
+        <small>${user.email}</small>  
+        <button type="button" class="btn" onclick= 'deleteUser(${user.id})'>X</button>
+        <i class="fas fa-pencil-alt" onclick= 'editUser(${user.id})'></i>
+      <li>
+       `
     })
-
 
 
 }
 
 listUsers()
+
+
 // register a user
 
 const register = (firstname, lastname, email, password1, password2) => {
@@ -98,8 +110,7 @@ const register = (firstname, lastname, email, password1, password2) => {
 
     users.push(user)
     listUsers()
-
-    console.log(user)
+    updateLocalStorage()
 
 }
 
@@ -136,13 +147,31 @@ function checkLength(input, min, max) {
 
 // delete user
 
-usersDiv.addEventListener('click', e => {
-    if (e.target.classList.contains('btn')) {
-        e.target.parentElement.remove()
-        window.confirm('Are you sure')
-    }
-})
+// output.addEventListener('click', e => {
+//     if (e.target.classList.contains('btn')) {
+//         e.target.parentElement.remove()
+//         window.confirm('Are you sure')
+//     }
+//     updateLocalStorage()
 
+// })
+
+
+const deleteUser = (id) => {
+    users = users.filter(user => user.id !== id)
+     console.log(users)
+     listUsers()
+     updateLocalStorage()
+}
+
+
+// edit user
+
+// add users to local storage
+
+function updateLocalStorage() {
+    localStorage.setItem('users', JSON.stringify(users))
+}
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
