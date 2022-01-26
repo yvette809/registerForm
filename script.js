@@ -1,30 +1,11 @@
-// array of users
 
-let users = [
-    {
-        id: 1,
-        firstname: 'yvette',
-        lastname: 'tanila',
-        email: 'evebabe2006@yahoo.com'
-    },
 
-    {
-        id: 2,
-        firstname: 'terrel',
-        lastname: 'roland',
-        email: 'terrel2006@yahoo.com'
-    },
 
-]
-
-// let users;
+let users = []
 
 // get users from localstorage
-// const localStorageUsers = JSON.parse(localStorage.getItem('users'))
-// //if we hav users in the local storage, we get them otherwise we return an empty array
-
-// let users = localStorage.getItem('users')!==null? localStorageUsers: []
-
+const localStorageUsers = JSON.parse(localStorage.getItem('users'))
+users = localStorage.getItem('users') !== null ? localStorageUsers : []
 
 // dom elements
 
@@ -35,8 +16,6 @@ const email = document.getElementById('email')
 const password = document.getElementById('password')
 const password2 = document.getElementById('password2')
 let output = document.querySelector('ul.users')
-console.log(output)
-
 
 
 // functions
@@ -80,11 +59,11 @@ const listUsers = () => {
 
     users.forEach(user => {
 
-        output.innerHTML += `<li 'id=${user.id}' class="user-div">
+        output.innerHTML += `<li id="${user.id}" class="user-div list-group-item text-center">
         <span>${user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1)}</span>
         <span>${user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}</span>
         <small>${user.email}</small>  
-        <button type="button" class="btn" onclick= 'deleteUser(${user.id})'>X</button>
+        <button type="button" class="delete-btn" >X</button>
         <i class="fas fa-pencil-alt" onclick= 'editUser(${user.id})'></i>
       <li>
        `
@@ -93,7 +72,9 @@ const listUsers = () => {
 
 }
 
+
 listUsers()
+
 
 
 // register a user
@@ -108,7 +89,8 @@ const register = (firstname, lastname, email, password1, password2) => {
         password2: password2
     }
 
-    users.push(user)
+    users.unshift(user)
+    showAlert('user added', 'success')
     listUsers()
     updateLocalStorage()
 
@@ -147,25 +129,48 @@ function checkLength(input, min, max) {
 
 // delete user
 
-// output.addEventListener('click', e => {
-//     if (e.target.classList.contains('btn')) {
-//         e.target.parentElement.remove()
-//         window.confirm('Are you sure')
-//     }
-//     updateLocalStorage()
+output.addEventListener('click', e => {
+    if (e.target.classList.contains('delete-btn')) {
+        e.target.parentElement.remove()
+        window.confirm('Are you sure')
+        showAlert('user deleted', 'success')
+        updateLocalStorage()
+    }
 
-// })
+
+})
 
 
-const deleteUser = (id) => {
-    users = users.filter(user => user.id !== id)
-     console.log(users)
-     listUsers()
-     updateLocalStorage()
+
+// show Alert
+function showAlert(message, className) {
+    const div = document.createElement('div')
+    div.className = `alert alert-${className}`
+    div.appendChild(document.createTextNode(message))
+    const container = document.querySelector('.container')
+    container.insertBefore(div, form)
+
+    //disappear in 3 seconds
+    setTimeout(() => {
+        document.querySelector('.alert').remove()
+
+    }, 3000)
 }
 
 
+
+
+
 // edit user
+
+function editUser(id) {
+    let newUsers = users
+    console.log('newUsers', newUsers)
+    let foundUser = newUsers.find(user => user.id === id)
+    console.log(foundUser)
+
+
+}
 
 // add users to local storage
 

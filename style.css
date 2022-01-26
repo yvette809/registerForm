@@ -1,170 +1,110 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Roboto:wght@100&family=Sen&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Roboto:wght@100&family=Sen&display=swap");
 
-
-*{
-    box-sizing: border-box;
+body {
+  background-color: azure;
 }
 
-/* body{
-    margin: 0;
-    min-height: 100vh;
-    font-family: 'Sen', sans-serif;
-    letter-spacing: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #c9ced3;
+.container {
+  width: 50%;
 }
 
-.container{
-    
-    width: 480px;
-   height: 720px;  
-   background: #fff;
-   display: flex;
-    flex-direction: column; 
-   align-items: center;
-   justify-content: space-between;
-   border-radius: 10px;
-   box-shadow: 0 5px 30px 10px rgba(0,0,0,0.4);
-
-} */
-
-body{
-    display: flex;
-    margin: 0;
-    min-height: 100vh;
-    font-family: 'Sen', sans-serif;
-    letter-spacing: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: aliceblue;
+.container h2 {
+  color: #fff;
 }
 
-.container{
-    width: 1000px;
-    display: flex;
-    justify-content: space-between;
-  
-
+.form-group {
+  margin-bottom: 0.2rem;
+  padding-bottom: 1.25rem;
+  position: relative;
 }
 
-.form{
-    width: 700px;
-    height: 720px;
-    border-radius: 10px;
-    background-color: #fff;
-    padding: 1rem 2rem;
- 
+.form-group input:focus {
+  outline: 0;
+}
+.form-group.success input {
+  border-color: #2ecc71;
 }
 
-.form-control{
-    margin-bottom: 0.6rem;
-    padding-bottom: 1.25rem;
-    position: relative;
+.form-group.error input {
+  border-color: #e74c3c;
 }
 
-.form-control label{
-    color: #777;
-    display: block;
-    margin-bottom: 0.3rem;
+.form-group small {
+  color: #e74c3c;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
 }
 
-.form-control input{
-    border: 2px solid #f0f0f0;
-    border-radius: 4px;
-    display: block;
-    width: 100%;
-    padding: 0.6rem;
-    font-size: 0.9rem;
+.form-group.error small {
+  visibility: visible;
 }
 
-.form-control input:focus{
-    outline: 0;
-}
-.form-control.success input{
-    border-color: #2ecc71;
+.form-group input::placeholder {
+  color: grey;
 }
 
-.form-control.error input{
-    border-color: #e74c3c;
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
 }
 
-.form-control small{
-    color: #e74c3c;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    visibility: hidden;
+.user-div {
+  position: relative;
+  padding: 0.5rem 1rem;
+  box-shadow: 5px 5px 10px #9191916b;
+  width: 70%;
 }
 
-.form-control.error small{
-    visibility: visible;
+.delete-btn {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: red;
+  font-weight: bolder;
+  cursor: pointer;
 }
 
-.form-control input::placeholder{
-    color: grey;
+.btn-success {
+  width: 100%;
+  font-size: 1.5rem;
 }
 
-.form button{
-    cursor: pointer;
-    color: #fff;
-    background-color: black;
-    border: none;
-    border-radius: 5px;
-    padding: 0.6rem;
-    width: 100%;
-    font-size: 1.5rem;
-    font-family: sen,sans-serif;
-    letter-spacing: 2px;
-    margin-top: 1.2rem;
+i {
+  position: absolute;
+  right: 0;
+  top: 60%;
+  cursor: pointer;
 }
 
-.form button:hover{
-    filter: contrast(200%);
-    background-color: rgb(22,22,22);
-}
-.form button:focus{
-    outline: none;
+li small {
+  display: block;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
+@media (max-width: 576px) {
+  .container {
+    max-width: 530px;
+  }
 
-.users{
-    margin-top: 8rem;
-   
-}
+  .user-div {
+    width: 100vw;
+    transform: translateX(20%);
+  }
 
-.user-div{
-    position: relative;
-    margin-bottom: 1rem;
-}
-
-button.btn{
-   position: absolute;
-   right: -4rem;
-   top: 0;
-   color: #fff;
-   border-radius: 5px;
-   background-color: red;
-   font-weight: bolder;
-   cursor: pointer;
-}
-
-i{
-    position: absolute;
-    right: -2rem;
-    top: 0;
-    cursor: pointer;
-}
-
-
-li small{
-    display: block;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-li{
-    list-style-type: none;
+  .container h2 {
+    font-size: 1.2rem;
+    width: 99vw;
+    padding: 1rem;
+  }
+  form {
+    width: 100vw;
+    padding: 1rem;
+  }
 }
